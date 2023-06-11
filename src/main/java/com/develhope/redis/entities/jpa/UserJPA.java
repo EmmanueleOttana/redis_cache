@@ -1,5 +1,6 @@
 package com.develhope.redis.entities.jpa;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class UserJPA {
 
     @Id

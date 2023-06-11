@@ -36,7 +36,7 @@ public class UserService {
         return userRepositoryJPA.save(user);
     }
 
-    public List<? extends Object> readAll() {
+    public List< ? > readAll() {
        return userRepositoryJPA.findAll();
     }
 
@@ -56,10 +56,9 @@ public class UserService {
         if (user == null)return null;
         user.setId(id);
         UserJPA newUser = userRepositoryJPA.save(user);
-
         Optional<UserRedis> userRedis = userRepositoryRedis.findById(id);
         if (userRedis.isPresent()){
-            //userRepositoryRedis.deleteById(id);
+            userRepositoryRedis.deleteById(id);
             userRepositoryRedis.save(convertData(newUser));
         }
         return user;
@@ -68,7 +67,6 @@ public class UserService {
     public void delete(Long id) {
         userRepositoryJPA.deleteById(id);
         userRepositoryRedis.deleteById(id);
-
     }
 
 }

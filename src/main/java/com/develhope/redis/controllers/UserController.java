@@ -2,6 +2,7 @@ package com.develhope.redis.controllers;
 
 import com.develhope.redis.entities.jpa.UserJPA;
 import com.develhope.redis.services.UserService;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ private UserService userService;
     }
 
     @GetMapping
-    public List<? extends Object> readAll(){
+    public List< ? > readAll(){
         return userService.readAll();
     }
 
